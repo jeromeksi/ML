@@ -50,7 +50,7 @@ model.compile(optimizer='Adam',
 # Train
 model.fit(ntrain_input,train_label,epochs=300,verbose=1,validation_split=1)
 
-# Validation
+# Validation | Prediction
 
 ntrain_test= np.array([[[0.0099,0.0741]],
                         [[0.0099,0.0740]],
@@ -66,5 +66,3 @@ print('99+740 =',int(round(predict[1][0]*10000,0)),'839')
 print('99+1 =',int(round(predict[2][0]*10000,0)),'100')
 print('999+999 =',int(round(predict[3][0]*10000,0)),'1998')
 print('0+0 =',int(round(predict[4][0]*10000,0)),'0')
-
-#Prediction
