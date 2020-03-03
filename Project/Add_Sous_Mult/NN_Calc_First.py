@@ -7,13 +7,11 @@
 # 3 : x
 # Ca marche je n'arrive pas a trouvé la bonne forme de nn, du coup 
 
-
 import tensorflow as tf
 from tensorflow import keras
 import numpy as np
 import random as ran
 import os
-import Helper.CreateModel as CreateModel
 os.environ['TF_CPP_MIN_LOG_LEVEL'] = '2'
 
 n_epoch = 150

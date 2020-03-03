@@ -1,1 +1,0 @@
-# Création d'un model en fonction de param d'entré
