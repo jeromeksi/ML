@@ -5,47 +5,25 @@ import tensorflow as tf
 from tensorflow import keras
 import numpy as np
 import random as ran
-
-def findTuple(ntrain_input,val1,val2):
-    for item in ntrain_input[0] :
-        if (item[0] == val2 and item[1] == val2) or (item[1] == val2 and item[0] == val2) :
-            return True
-    return False
-
+from Helper.Function_Helper import CreateDataSet,CreateModel
 
 # Créer mes deux dataset
 
-ntrain_input = np.array([[[0,0]]])
-# train_input = [[0,0]]
-train_label = [0]
-i =0
-for i in range(1000-1):
-    val1 = ran.randint(0,1000)/10000.0
-    val2 = ran.randint(0,1000)/10000.0
-    val3 = (val1+val2)
-    if not findTuple(ntrain_input,val1,val2) :
-        var = [val1,val2]
-        ntrain_input = np.concatenate((ntrain_input,[np.array([[val1,val2]])]))
-        train_label.append(val3)
+train_input,train_output = CreateDataSet(1000)
 
-print(len(ntrain_input))
-print(len(train_label))
-n= ran.randint(0,len(ntrain_input))
-print(ntrain_input[n])
-print(train_label[n])
+# print(len(train_input))
+# print(len(train_output))
+# n= ran.randint(0,len(train_input))
+# print(train_input[n])
+# print(train_output[n])
 
 
 # Créer NN 
 
-model = keras.Sequential([
-    keras.layers.Flatten(input_shape=(1 ,2)),
-    keras.layers.Dense(1, activation=tf.nn.relu6)
-])
-model.compile(optimizer='Adam',
-              loss=keras.losses.mean_squared_error)
+model = CreateModel()
 
 # Train
-model.fit(ntrain_input,train_label,epochs=300,verbose=1,validation_split=1)
+model.fit(train_input,train_output,epochs=300,verbose=1,validation_split=1)
 
 # Validation | Prediction
 
