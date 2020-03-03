@@ -1,13 +1,10 @@
-# Bilan : Ca fonctionne !! 
-# Le principe : 2 neurone ne entrée et 1 en sortie 
-# le neruone de sortie s'active sur une fonctionne sigmoid
-# le max possible dans cette exemple  999+999 
+# Version final 
+# Création d'un NN qui permet d'addition 2 nombre a et b (a,b ∈ {0,99})
+
 import tensorflow as tf
 from tensorflow import keras
 import numpy as np
 import random as ran
-
-# Trouver un tuple dans un tableau
 
 def findTuple(ntrain_input,val1,val2):
     for item in ntrain_input[0] :
