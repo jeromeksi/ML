@@ -20,10 +20,22 @@ train_input,train_output = CreateDataSet(1000)
 
 # Créer NN 
 
-model = CreateModel()
+# forme du réseau 2 neurone d'entrée 1 de sortie qui a pour f activation relu6
+# Aucue couche profonde
+# La fonction loss = Erreur quadratique moyenne (mean_squared_error)
+#          _______
+#   21 ---|       |
+#         | relu6 | --- 30
+#   9  ---|_______|
+# 
+
+
+model = CreateModel() 
 
 # Train
 model.fit(train_input,train_output,epochs=300,verbose=1,validation_split=1)
+# Le chiffres loss correspond à la précision du model 
+# Plus loss petit plus c'est précis
 
 # Validation | Prediction
 
@@ -33,7 +45,6 @@ ntrain_test= np.array([[[0.0099,0.0741]],
                         [[0.0999,0.0999]],
                         [[0.0000,0.0000]],
                         ])
-
 predict = model.predict(ntrain_test)
 
 print('99+741 =',int(round(predict[0][0]*10000,0)),'840')

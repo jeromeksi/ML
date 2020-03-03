@@ -1,6 +1,7 @@
 import numpy as np
 import random as ran
-
+import tensorflow as tf
+from tensorflow import keras
 def findTuple(ntrain_input,val1,val2):
     for item in ntrain_input[0] :
         if (item[0] == val2 and item[1] == val2) or (item[1] == val2 and item[0] == val2) :
@@ -28,5 +29,5 @@ def CreateModel():
         keras.layers.Dense(1, activation=tf.nn.relu6)
     ])
     model.compile(optimizer='Adam',
-                loss=keras.losses.mean_squared_error)
+                loss=keras.losses.mean_squared_error) 
     return model
