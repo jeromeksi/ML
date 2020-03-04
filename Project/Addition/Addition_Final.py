@@ -1,6 +1,7 @@
 # Version final 
-# Création d'un NN qui permet d'addition 2 nombre a et b (a,b ∈ {0,99})
-
+# Création d'un NN qui permet d'addition 2 nombre a et b (a,b ∈ {0,999})
+# Note : Il existe de rare cas où le réseau reste bloqué 
+#        avec un loss trop élevé pour être utilisable...
 import tensorflow as tf
 from tensorflow import keras
 import numpy as np
@@ -23,15 +24,24 @@ train_output = train_output / n_normalize
 
 # Créer NN 
 
-# forme du réseau 2 neurone d'entrée 1 de sortie qui a pour f activation relu6
+# forme du réseau : 2 neurones d'entré et 1 de sortie qui a pour f activation relu6
 # Aucue couche profonde
-# La fonction loss = Erreur quadratique moyenne (mean_squared_error)
+# Fonction objectif (loss function) = Erreur quadratique moyenne (mean_squared_error)
 #          _______
 #   21 ---|       |
 #         | relu6 | --- 30
 #   9  ---|_______|
+# Thérorie
+# Le principe du réseau : s = relu6(x*W1 + y*W2)
 # 
-
+#       W1  _______
+#   x -----|       |
+#          | relu6 | --- s
+#   y -----|_______|
+#       W2
+#
+# W1 et W2 sont les poids appliqués au lien de chaque neurones
+# Dans cette exemple simpliste le W1 et W2 doivent être égale à 1
 
 model = CreateModel() 
 # La fonction CreateModel n'est pas parametrable pour ce projet
@@ -49,11 +59,17 @@ model.fit(train_input,train_output,epochs=n_epochs,verbose=1,validation_split=1)
 
 # Validation | Prediction
 
-ntrain_test= np.array([[[99,741]],
-                        [[99,740]],
-                        [[99,1]],
-                        [[999,999]],
-                        [[0,0]],
+# ntrain_test= np.array([[[99,741]],
+#                         [[99,740]],
+#                         [[99,1]],
+#                         [[999,999]],
+#                         [[0,0]],
+#                         ])
+ntrain_test= np.array([[99,741],
+                        [99,740],
+                        [99,1],
+                        [999,999],
+                        [0,0]
                         ])
 ntrain_test =ntrain_test / n_normalize          
 predict = model.predict(ntrain_test)

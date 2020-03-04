@@ -1,7 +1,12 @@
 # Bilan : Ca fonctionne !! 
 # Le principe : 2 neurone ne entrée et 1 en sortie 
 # le neruone de sortie s'active sur une fonctionne sigmoid
-# le max possible dans cette exemple  999+999 
+# le max possible dans cette exemple  999+999
+# Cette version fonction correctement MAIS 2 petits problème
+#   1. Très mal structuré (c'est nomal c'est la version final)
+#   2. La gestion des tableaux est mauvais, les tableaux d'input 
+#       sont sous a forme [[[w,x]],[[y,z]]] le mieux est => [[w,x],[y,z]]
+
 import tensorflow as tf
 from tensorflow import keras
 import numpy as np
