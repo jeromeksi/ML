@@ -11,18 +11,20 @@ def findTuple(ntrain_input,val1,val2):
 # Cette fonction créer un dataset input et output
 def CreateDataSet(size):
     train_input = np.array([[[0,0]]])
-    train_output = [0]
+    train_output = np.array(0)
     for i in range(size-1):
-        a = ran.randint(0,1000)/10000.0
-        b = ran.randint(0,1000)/10000.0
+        a = ran.randint(0,1000)
+        b = ran.randint(0,1000)
         tot = (a+b)
         if not findTuple(train_input,a,b):
             train_input = np.concatenate((train_input,[np.array([[a,b]])]))
-            train_output.append(tot)
+            train_output = np.append(train_output,tot)
         else : 
             i-=1
     return train_input,train_output
-# Cette fonction crére un dataset
+
+    
+# Cette fonction crére un model 
 def CreateModel():
     model = keras.Sequential([
         keras.layers.Flatten(input_shape=(1 ,2)),
