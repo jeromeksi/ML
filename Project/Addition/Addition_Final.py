@@ -44,7 +44,7 @@ train_output = train_output / n_normalize
 # Dans cette exemple simpliste le W1 et W2 doivent être égale à 1
 
 model = CreateModel() 
-# La fonction CreateModel n'est pas parametrable pour ce projet
+# La fonction CreateModel n'a pas parametrable pour ce projet
 
 # Train
 model.fit(train_input,train_output,epochs=n_epochs,verbose=1,validation_split=1)
