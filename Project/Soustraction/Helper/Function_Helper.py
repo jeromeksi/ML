@@ -25,7 +25,6 @@ def CreateDataSet(size):
 
 
 # Cette fonction crére un model 
-# def CreateModel(f_activation):
 def CreateModel(forme):
     model = keras.Sequential()
     
@@ -35,12 +34,6 @@ def CreateModel(forme):
         elif(item[3]==keras.layers.Dense):
             model.add(keras.layers.Dense(item[0], activation=item[1]))
 
-
-    # model = keras.Sequential([
-    #     keras.layers.Flatten(input_shape=(2,)),
-    #     keras.layers.Dense(4, activation=tf.math.sin),
-    #     keras.layers.Dense(1, activation=tf.math.sin)
-    # ])
     model.compile(optimizer='Adam',
                 loss=keras.losses.mean_squared_error) 
     return model

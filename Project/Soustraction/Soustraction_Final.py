@@ -29,7 +29,8 @@ print(train_output[2])
 
 
 # Model 
-# TODO : Créer un objet Layer qui contiendra les informations 
+# TODO : Créer un objet NN qui contiendra les informations
+# Un objet Input et un Output,un tableau d'objet Layer pour les couches   
 forme_nn = np.array([[None,None,(2,),keras.layers.Flatten]]) #Input
 forme_nn = np.concatenate((forme_nn,np.array([[4,tf.math.sin,None,keras.layers.Dense]])))
 forme_nn = np.concatenate((forme_nn,np.array([[1,tf.math.sin,None,keras.layers.Dense]]))) #Output
@@ -46,10 +47,10 @@ data_validate = np.array([
                 [5,10],
                 [42,42],
                 [42,10],
-                [42,10],
+                [20,910],
                 [587,153]
                 ])
-data_validate = data_validate / 10000.0
+data_validate = data_validate / n_normalize
 # Prediction
 predict = model.predict(data_validate)
 
@@ -58,5 +59,5 @@ print('45-5 Prédiction =',int(round(predict[0][0]*10000,0)),'| Résultat =40')
 print('5-10 Prédiction =',int(round(predict[1][0]*10000,0)),'| Résultat =-5')
 print('42-42 Prédiction =',int(round(predict[2][0]*10000,0)),'| Résultat =0')
 print('42-10 Prédiction =',int(round(predict[3][0]*10000,0)),'| Résultat =-32')
-print('42-10) Prédiction =',int(round(predict[4][0]*10000,0)),'| Résultat =32')
+print('20-910) Prédiction =',int(round(predict[4][0]*10000,0)),'| Résultat =-890')
 print('587-153 Prédiction =',int(round(predict[5][0]*10000,0)),'| Résultat =434')
