@@ -13,8 +13,8 @@ def CreateDataSet(size):
     train_input = np.array([[0,0]])
     train_output = np.array(0)
     for i in range(size-1):
-        a = ran.randint(0,1000)
-        b = ran.randint(0,1000)
+        a = ran.randint(0,9999)
+        b = ran.randint(0,9999)
         tot = (a+b)
         if not findTuple(train_input,a,b):
             train_input = np.concatenate((train_input,np.array([[a,b]])))
@@ -22,3 +22,18 @@ def CreateDataSet(size):
         else : 
             i-=1
     return train_input,train_output
+
+
+# Cette fonction crére un model 
+def CreateModel(forme):
+    model = keras.Sequential()
+    
+    for item in forme:
+        if(item[3]==keras.layers.Flatten):
+            model.add(keras.layers.Flatten(input_shape=item[2]))
+        elif(item[3]==keras.layers.Dense):
+            model.add(keras.layers.Dense(item[0], activation=item[1]))
+
+    model.compile(optimizer='Adam',
+                loss=keras.losses.mean_squared_error) 
+    return model
